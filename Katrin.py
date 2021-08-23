@@ -1,10 +1,16 @@
 import pandas as pd
 import numpy as np
 
-flights_data = pd.read_csv('flights_data.csv', low_memory=False)
-df_9 = flights_data[['origin', 'flights']].copy()
-df_9 = df_9.groupby('origin').agg(flights_count = ('flights', 'size')).reset_index().sort_values('flights_count', ascending=False)
-print(df_9[0:10])
+passengers_all_car = pd.read_csv('passengers_all_2019.csv')
+flights_data_car = pd.read_csv('flights_data_all_2019_Months.csv')
+fuel_car = pd.read_csv('fuel_comsumption_all_2019.csv')
+
+#print(passengers_all[['passengers','unique_carrier', 'airline_id', 'unique_carrier_name']])
+
+print(passengers_all_car['unique_carrier'].unique())
+print(flights_data_car['op_unique_carrier'].unique())
+print(fuel_car['unique_carrier'].unique())
+
 
 
 
