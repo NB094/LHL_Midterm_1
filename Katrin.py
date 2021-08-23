@@ -1,8 +1,15 @@
 import pandas as pd
 import numpy as np
 
-passengers = pd.read_csv('passengers.csv')
-passengers.columns =['departures_scheduled', 'departures_performed', 'payload', 'seats', 'passengers', 'freight', 'mail', 'distance', 'ramp_to_ramp', 'air_time', 'unique_carrier', 'airline_id', 'unique_carrier_name', 'region', 'carrier', 'carrier_name', 'carrier_group', 'carrier_group_new', 'origin_airport_id', 'origin_city_market_id', 'origin', 'origin_city_name', 'origin_country', 'origin_country_name', 'dest_airport_id', 'dest_city_market_id', 'dest', 'dest_city_name', 'dest_country', 'dest_country_name', 'aircraft_group', 'aircraft_type', 'aircraft_config', 'month', 'year', 'distance_group', 'class','test']
-print(passengers['class'])
+flights_data = pd.read_csv('flights_data.csv', low_memory=False)
+df_9 = flights_data[['origin', 'flights']].copy()
+df_9 = df_9.groupby('origin').agg(flights_count = ('flights', 'size')).reset_index().sort_values('flights_count', ascending=False)
+print(df_9[0:10])
+
+
+
+
+
+
 
 
